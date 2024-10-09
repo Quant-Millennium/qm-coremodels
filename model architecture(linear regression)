@@ -1,0 +1,4 @@
+model = TransformedTargetRegressor(LinearRegression(),
+                                   transformer=MinMaxScaler())
+model.fit(data[["open"]], data_target)
+predictions = model.predict(some_new_data)
