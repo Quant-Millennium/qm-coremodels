@@ -1,0 +1,19 @@
+def build_model(input_dim):
+    # Initialize the model
+    model = Sequential()
+
+    # Input layer and first hidden layer
+    model.add(Dense(128, activation='relu', input_shape=(input_dim,)))
+    model.add(Dropout(0.2))  # Dropout 20% of the neurons
+
+    # Second hidden layer
+    model.add(Dense(64, activation='relu'))
+    model.add(Dropout(0.2))  # Additional dropout for regularization
+
+    # Third hidden layer
+    model.add(Dense(32, activation='relu'))
+    
+    # Output layer for binary classification
+    model.add(Dense(1, activation='sigmoid'))
+
+    return model
