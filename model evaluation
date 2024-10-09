@@ -1,0 +1,17 @@
+def evaluate_rnn_model(model, X_test, y_test):
+    # Load the best model saved by ModelCheckpoint during training
+    model = load_model('best_model.h5')
+    
+    # Predicting the test set results
+    y_pred = model.predict(X_test)
+    
+    # Calculating the Mean Squared Error
+    mse = np.mean(np.square(y_test - y_pred))
+    rmse = np.sqrt(mse)
+    
+    print(f'Mean Squared Error on Test Set: {mse:.4f}')
+    print(f'Root Mean Squared Error on Test Set: {rmse:.4f}')
+
+    return y_pred, mse, rmse
+
+y_pred, mse, rmse = evaluate_rnn_model(model, X_test, y_test)
